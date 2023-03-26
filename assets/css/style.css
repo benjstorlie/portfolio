@@ -10,7 +10,9 @@
   --header-text: darkslategray ;
   --nav-bkgd: aliceblue ;
   --nav-hover-bkgd: lightblue ;
-  --border: navy ;
+  --border: midnightblue ;
+  --footer-bkgd: peru ;
+  --footer-text: slateblue ;
 }
 
 /*
@@ -104,6 +106,18 @@ h2 {
   height: 100px;
   object-fit: cover;
   object-position: top;
+}
+
+footer {
+  background: var(--footer-bkgd);
+  color: var(--footer-text) ;
+  padding: 30px ;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.logo {
+  height: 21px ;
 }
 
 /*

@@ -35,14 +35,17 @@ header {
   background-size: 900px;
   background-repeat: no-repeat;
   color: var(--header-text);
+  z-index:2;
 }
 
 .name-and-pic{
-  margin-top: 15px;
-  margin-right: 20px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
   float: right ;
   display: flex ;
   align-items: start ;
+  z-index: 3;
 }
 
 h1 {
@@ -63,11 +66,15 @@ nav {
   display: flex ;
   flex-wrap: wrap ;
   font-size: 30px;
+  justify-items: start;
+  
+  border: solid black 5px ;
 }
 
 nav a {
   padding: 10px ;
   width: 400px ;
+  background-color: lightcoral;
 }
 
 nav a:hover {

@@ -36,6 +36,7 @@ header {
   background-repeat: no-repeat;
   color: var(--header-text);
   z-index:2;
+  margin-bottom: 20px;
 }
 
 .name-and-pic{
@@ -45,7 +46,6 @@ header {
   float: right ;
   display: flex ;
   align-items: start ;
-  z-index: 3;
 }
 
 h1 {
@@ -59,22 +59,23 @@ h1 {
   border-radius: 20px;
 }
 
+.name-and-pic a {
+  z-index: 3;
+}
+
 nav {
-  background-color: var(--nav-bkgd);
   position: absolute ;
-  bottom: 5px ;
+  bottom: 0px ;
   display: flex ;
-  flex-wrap: wrap ;
+  flex-wrap: wrap-reverse ;
   font-size: 30px;
-  justify-items: start;
-  
-  border: solid black 5px ;
+  width: auto;
 }
 
 nav a {
   padding: 10px ;
   width: 400px ;
-  background-color: lightcoral;
+  background-color: var(--nav-bkgd);
 }
 
 nav a:hover {

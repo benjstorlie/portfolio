@@ -1,11 +1,10 @@
 :root {
-  /* Define variables for the margin and padding for
-  the cards, and how they will change when hovered,
-  so the sum is still the same. */
   --card-margin: 10px ;
   --card-padding: 5px ;
-  --hover-difference: 3px;
   --card-width: 300px ; 
+  --card-height: 250px ;
+  --card-height-first: 300 ;
+  --img-max-width: 600px;
   /* Define various colors used throughout the page */
   --header-text: darkslategray ;
   --nav-bkgd: aliceblue ;
@@ -15,28 +14,18 @@
   --footer-text: slateblue ;
 }
 
-/*
-.debugbox {
-  position: fixed ;
-  bottom: 0 ;
-  right: 0 ;
-  padding: 5px ;
-  border: solid darkgray 2px;
-  background-color: aquamarine;
-}
-*/
 
 header {
   position: relative ;
   width: 100% ;
   height: 200px ;
+  margin-bottom: 20px;
+  z-index:2;
+  color: var(--header-text);
   background-image: url("../images/vector6blue.png");
   background-position: right;
   background-size: 900px;
   background-repeat: no-repeat;
-  color: var(--header-text);
-  z-index:2;
-  margin-bottom: 20px;
 }
 
 .name-and-pic{
@@ -104,31 +93,73 @@ h3 {
 .flex {
   display: flex;
   width: 100% ;
-  flex-wrap: wrap ;
+  flex-wrap: wrap-reverse ;
+  flex-direction: row-reverse ;
   margin: 10px auto ;
+
 }
 
+/* This is my workaround to make the cards wrap in the way
+I want them. I want the line with the fewest items to contain
+the first items. So I have to have the items listed in reverse
+order, but I still want them in the correct order in the html,
+both for accessiblity and for readability and editing. */
+
+.card:nth-child(1) {order: 5 ; height: var(--card-height-first)}
+.card:nth-child(2) {order: 4 ;}
+.card:nth-child(3) {order: 3 ;}
+.card:nth-child(4) {order: 2 ;}
+.card:nth-child(5) {order: 1 ;}
+
+
 .card {
-  flex: 1 1 auto ;
-  max-width: var(--card-width) ;
+  min-width: var(--card-width);
+  flex: 1 0 var(--card-width) ;
+  height: var(--card-height) ;
   border: solid var(--border) 2px ;
   padding: var(--card-padding) ;
   margin: var(--card-margin) ;
+  display: flex ;
+  flex-direction: column;
+  position: relative;
+}
+
+/* I wanted to include an external link icon. I'm just going to manually 
+add a class instead of anything automatic. */
+
+.external::after {
+  content: '' ;
+  position:absolute;
+  right: 3px ;
+  top: 3px ;
+  width: 18px ;
+  height:18px;
+  background-image: url(./../images/External-Link.svg);
+  background-size: contain;
 }
 
 .card:hover {
   box-shadow: 6px 3px 3px gray; 
-  padding: calc(var(--card-padding) + var(--hover-difference));
-  margin: calc(var(--card-margin) - var(--hover-difference));
-  max-width: calc(var(--card-width) + var(--hover-difference));
+  transform: scale(1.02);
+  transition: transform 100ms ease-in-out;
 }
 
 
+/*
+I'm having trouble making the images behave in exactly the
+way I want.  I want the total height of the cards to be card-height,
+and I want the image to fill up the rest of the vertical
+space, cropping the rest.
+*/
+
 .card img {
   width: 100% ;
-  height: 100px;
-  object-fit: cover;
-  object-position: top;
+  max-width: var(--img-max-width);
+  max-height: var(--card-height) ;
+  align-self: center;
+  overflow-y:hidden;
+  object-fit: cover; 
+  object-position: top; 
 }
 
 footer {
@@ -139,40 +170,8 @@ footer {
   line-height: 1.5;
 }
 
+/* This is just the LinkedIn logo.*/
 .logo {
   height: 21px ;
 }
 
-/*
-#debug:checked ~ nav {
-  background: deepskyblue;
-}
-
-#debug:checked ~ a {
-  background: peru ;
-}
-
-#debug:checked ~ h1 {
-  background: blueviolet;
-}
-
-#debug:checked ~ section {
-  background: lightpink ;
-}
-
-#debug:checked ~ .flex {
-  background: lightseagreen ;
-}
-
-#debug:checked ~ .flex {
-  background: goldenrod ;
-}
-
-#debug:checked ~ h2 {
-  background: mediumpurple ;
-}
-
-#debug:checked ~ p {
-  background: olivedrab ;
-}
-*/

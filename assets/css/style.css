@@ -14,19 +14,27 @@
   --footer-text: slateblue ;
 }
 
+/* The header image is based on some fractals I designed in Python some years ago. */
 
 header {
   position: relative ;
   width: 100% ;
   height: 200px ;
-  margin-bottom: 20px;
   z-index:2;
   color: var(--header-text);
-  background-image: url("../images/vector6blue.png");
-  background-position: right;
-  background-size: 900px;
-  background-repeat: no-repeat;
+  background-image: url("../images/header-img.png");
+  background-position: left;
+  background-size: cover;
 }
+
+.thick-line {
+  background-color: black;
+  height: 20px;
+}
+
+/* I have my name and picture act as one object, and I used flex because that's how I knew how
+to make them both align at the top.  Both the heading at the image link back to the main page.
+*/
 
 .name-and-pic{
   position: absolute;
@@ -48,9 +56,15 @@ h1 {
   border-radius: 20px;
 }
 
+/* Both the name and image are in front of everything else on the header. */
+
 .name-and-pic a {
   z-index: 3;
 }
+
+/* Navigation bar.  I liked the links wrapping so that they were flush with the bottom and left 
+of the header.  Currently, the items are in reverse order vertically, but there aren't too 
+many of them anyway.  */
 
 nav {
   position: absolute ;
@@ -67,12 +81,14 @@ nav a {
   background-color: var(--nav-bkgd);
 }
 
+/* The navigation links turn color when hovered over. */
+
 nav a:hover {
   background-color: var(--nav-hover-bkgd) ;
 }
 
 main {
-  margin: 0px 20px ;
+  margin: 20px;
 }
 
 h2 {
@@ -83,7 +99,9 @@ h3 {
   font-size: 26px;
 }
 
-
+/* Each .projects section contains a heading and a flexbox with image links to all the 
+projects in that category.
+*/
 
 .projects h2 {
   display: block;
@@ -138,6 +156,11 @@ add a class instead of anything automatic. */
   background-size: contain;
 }
 
+/* I think this looks very nice, and I am happy that the transform scale does not move
+everything else around, because I thought the margins would push things out of the 
+ways when scaled up.
+*/
+
 .card:hover {
   box-shadow: 6px 3px 3px gray; 
   transform: scale(1.02);
@@ -161,6 +184,8 @@ space, cropping the rest.
   object-fit: cover; 
   object-position: top; 
 }
+
+/* The footer currently contains contact info. */
 
 footer {
   background: var(--footer-bkgd);
